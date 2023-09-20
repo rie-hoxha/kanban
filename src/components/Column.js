@@ -13,15 +13,21 @@ const Container = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Title = styled.h3`
-  padding: 8px;
-  background-color: pink;
-  text-align: center;
-  background-color: lightblue;
-  position: sticky;
-  top: 0;
+  padding: 10px 20px;
+  background-color: #E1E2FF;
+  font-size: 16px;
+  font-weight: bold;
+  color: #32286A;
+  border-radius: 20px;
+  bottom: 10px;
+  display: inline-block;
+  margin-right: 70%; /* Add margin-right: auto to push the title to the left */
+  margin-top: 50px;
 `;
 
 const TaskList = styled.div`
@@ -34,9 +40,9 @@ const TaskList = styled.div`
 
 export default function Column({ title, tasks, id }) {
   return (
-    <Container className='column'>
-      <div>
-        <Title>{title}</Title>
+    <div>
+      <Title>{title}</Title>
+      <Container className='column'>
         <Droppable droppableId={id}>
           {(provided, snapshot) => (
             <TaskList 
@@ -53,13 +59,12 @@ export default function Column({ title, tasks, id }) {
                   />
                   ))
               }
-             
 
               {provided.placeholder}
             </TaskList>
           )}
         </Droppable>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
