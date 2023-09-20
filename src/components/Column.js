@@ -8,7 +8,7 @@ import Task from './Task';
 const Container = styled.div`
   background-color: #F8F8F8;
   width: 350px;
-  height: 400px;
+  height: 360px;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -16,6 +16,7 @@ const Container = styled.div`
   flex-direction: column;
   border-radius: ${(props) => (props.isFirst ? '10px 0 0 10px' : '')}
                ${(props) => (props.isLast ? '0 10px 10px 0' : '')};
+
 `;
 
 
