@@ -18,6 +18,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add the box-shadow property */
 `;
 
 const TextContent = styled.div``;
@@ -29,6 +30,10 @@ padding: 2px;
 cursor:pointer;
 `;
 
+const TaskId = styled.span`
+  color: #686B72; /* Make the task ID text bold */
+  font-weight: bold;
+`;
 // function below checks/ controls the color of the tasks
 //is the item being dragged,if yes then lightgreen color
 //
@@ -41,7 +46,7 @@ function bgcolorChange(props) {
         : "#DCDCDC"
       : props.isBacklog
       ? "#F2D7D5"
-      : "#EAF4FC";
+      : "#FFFFFF";
   }
 
 export default function Task({ task, index }) {
@@ -56,11 +61,11 @@ export default function Task({ task, index }) {
           >
             <div>
               <div style={{ display: "flex", justifyContent: "start", padding: 2 }}>
-                <span>
+                <TaskId>
                   <small>
                     #{task.id}{" "}
                   </small>
-                </span>
+                </TaskId>
               </div>
               <div style={{ display: "flex", justifyContent: "center", padding: 2 }}>
                 <TextContent>{task.title}</TextContent>

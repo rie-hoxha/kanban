@@ -1,0 +1,15 @@
+.title-todo {
+    color: #32286A; /* Text color for "To-Do" */
+    background-color: #E1E2FF;
+  }
+  
+  .title-done {
+    color: #710A0B; /* Text color for "Done" */
+    background-color: #FBC8C4;
+  }
+  
+  .title-backlog {
+    color: #6E3500; /* Text color for "Backlog" */
+    background-color: #FFEEB6;
+  }
+  
