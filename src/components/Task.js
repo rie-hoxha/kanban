@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Draggable } from 'react-beautiful-dnd'
-import { Avatar } from "antd";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome
+import { faTrash } from '@fortawesome/free-solid-svg-icons'; // Import the trash icon
+
 
 const Container = styled.div`
   border-radius: 10px;
@@ -20,10 +22,11 @@ const Container = styled.div`
 
 const TextContent = styled.div``;
 
-const Icons= styled.div`
+const BinIcon= styled.div`
 display: flex;
 justify-content: end;
 padding: 2px;
+cursor:pointer;
 `;
 
 // function below checks/ controls the color of the tasks
@@ -62,14 +65,11 @@ export default function Task({ task, index }) {
               <div style={{ display: "flex", justifyContent: "center", padding: 2 }}>
                 <TextContent>{task.title}</TextContent>
               </div>
-              <Icons>
+              <BinIcon>
                 <div>
-                  <Avatar
-                    // onclick={()=> console.log(task)}
-                    src={"https://joesch.moe/api/v1/random?key=" + task.id}
-                  ></Avatar>
+                  <FontAwesomeIcon icon={faTrash} />
                 </div>
-              </Icons>
+              </BinIcon>
             </div>
             {provided.placeholder}
           </Container>
