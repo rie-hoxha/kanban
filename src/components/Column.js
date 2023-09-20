@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import "./scroll.css";
 import Task from './Task';
 
+
 const Container = styled.div`
   background-color: #f4f5f7;
   border-radius: 2.5px;
@@ -17,18 +18,39 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+
+
+// Update the Title component to apply the appropriate class based on the title
+
 const Title = styled.h3`
   padding: 10px 20px;
   background-color: #E1E2FF;
   font-size: 16px;
   font-weight: bold;
-  color: #32286A;
   border-radius: 20px;
   bottom: 10px;
   display: inline-block;
-  margin-right: 70%; /* Add margin-right: auto to push the title to the left */
+  margin-right: 70%;
   margin-top: 50px;
+  
+  /* Apply different text colors based on the title class name */
+  &.title-todo {
+    color: #32286A; /* Text color for "To-Do" */
+    background-color: #E1E2FF;
+  }
+
+  &.title-done {
+    color: #710A0B; /* Text color for "Done" */
+    background-color: #FBC8C4;
+  }
+
+  &.title-backlog {
+    color: #6E3500; /* Text color for "Backlog" */
+    background-color: #FFEEB6;
+  }
+};
 `;
+
 
 const TaskList = styled.div`
   padding: 3px;
@@ -38,10 +60,45 @@ const TaskList = styled.div`
   min-height: 100px;
 `;
 
+// export default function Column({ title, tasks, id }) {
+//   return (
+//     <div>
+//       <Title>{title}</Title>
+//       <Container className='column'>
+//         <Droppable droppableId={id}>
+//           {(provided, snapshot) => (
+//             <TaskList 
+//             ref={provided.innerRef} 
+//             {...provided.droppableProps}
+//             isDraggingOver={snapshot.isDraggingOver}
+//             >
+//               {/* Your tasks will go here */}
+//               {
+//                 tasks.map((task, index)=> (<Task
+//                   key={index}
+//                   index={index}
+//                   task={task}
+//                   />
+//                   ))
+//               }
+
+//               {provided.placeholder}
+//             </TaskList>
+//           )}
+//         </Droppable>
+//       </Container>
+//     </div>
+//   );
+// }
+
 export default function Column({ title, tasks, id }) {
+  // Define a className based on the title
+  const titleClassName = `title-${title.toLowerCase()}`;
+
   return (
     <div>
-      <Title>{title}</Title>
+      {/* Apply the className to the Title component */}
+      <Title className={titleClassName}>{title}</Title>
       <Container className='column'>
         <Droppable droppableId={id}>
           {(provided, snapshot) => (
