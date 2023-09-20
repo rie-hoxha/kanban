@@ -21,17 +21,20 @@ const Container = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add the box-shadow property */
 `;
 
-const TextContent = styled.div``;
+const TextContent = styled.div`
+color: #686B72;
+`;
 
 const BinIcon= styled.div`
 display: flex;
 justify-content: end;
 padding: 2px;
 cursor:pointer;
+
 `;
 
 const TaskId = styled.span`
-  color: #686B72; /* Make the task ID text bold */
+  color: #333; /* Make the task ID text bold */
   font-weight: bold;
 `;
 // function below checks/ controls the color of the tasks
