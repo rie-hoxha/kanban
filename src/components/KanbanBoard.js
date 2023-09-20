@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import Column from './Column';
 
+
 export default function KanbanBoard() {
   // two columns, Incomplete and Complete
   const [completed, setCompleted] = useState([]);
@@ -55,29 +56,32 @@ export default function KanbanBoard() {
     return array.filter((item) => item.id != id);
   }
 
+
   return (
-    <DragDropContext onDragEnd ={handleDragEnd}>
+    <DragDropContext onDragEnd={handleDragEnd}>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column', // Column layout
-          alignItems: 'center', // Center horizontally
-          minHeight: '100vh', // Ensure full viewport height
+          display: "flex",
+          flexDirection: "column", // Column layout
+          alignItems: "center", // Center horizontally
+          minHeight: "100vh", // Ensure full viewport height
         }}
       >
-        <h2 style={{ textAlign: "center" }}>Kanban Board</h2>
+        <h2 style={{ textAlign: "center", fontSize: "30px", marginTop: "40px" }}>Kanban Board</h2>
+
 
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexDirection: 'row',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
           }}
         >
-          <Column title={"To-Do"} tasks={incomplete} id={"1"} />
+          <Column title={"To-Do"} tasks={incomplete} id={"1"} isFirst={true} />
           <Column title={"Done"} tasks={completed} id={"2"} />
-          <Column title={"Backlog"} tasks={[]} id={"3"} />
+          <Column title={"Backlog"} tasks={[]} id={"3"} isLast={true} />
+
           {/* Add more columns as needed */}
         </div>
       </div>

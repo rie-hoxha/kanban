@@ -7,17 +7,17 @@ import Task from './Task';
 
 const Container = styled.div`
   background-color: #F8F8F8;
-  border-radius: 2.5px;
   width: 350px;
-  border-radius: 20px;
-  height: 475px;
+  height: 400px;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  // border: 1px solid gray;
   display: flex;
   flex-direction: column;
+  border-radius: ${(props) => (props.isFirst ? '10px 0 0 10px' : '')}
+               ${(props) => (props.isLast ? '0 10px 10px 0' : '')};
 `;
+
 
 // Update the Title component to apply the appropriate class based on the title
 
@@ -30,7 +30,7 @@ const Title = styled.h3`
   bottom: 10px;
   display: inline-block;
   margin-right: 70%;
-  margin-top: 50px;
+  margin-top: 30px;
   
   &.title-todo {
     color: #32286A; /* Text color for "To-Do" */
@@ -60,37 +60,40 @@ const TaskList = styled.div`
 `;
 
 
-export default function Column({ title, tasks, id }) {
-  // Define a className based on the title
-  const titleClassName = `title-${title.toLowerCase()}`;
 
-  return (
-    <div>
-      {/* Apply the className to the Title component */}
-      <Title className={titleClassName}>{title}</Title>
-      <Container className='column'>
-        <Droppable droppableId={id}>
-          {(provided, snapshot) => (
-            <TaskList 
-            ref={provided.innerRef} 
-            {...provided.droppableProps}
-            isDraggingOver={snapshot.isDraggingOver}
-            >
-              {/* Your tasks will go here */}
-              {
-                tasks.map((task, index)=> (<Task
-                  key={index}
-                  index={index}
-                  task={task}
+
+  export default function Column({ title, tasks, id, isFirst, isLast }) {
+    // Define a className based on the title
+    const titleClassName = `title-${title.toLowerCase()}`;
+  
+    return (
+      <div>
+        {/* Apply the className to the Title component */}
+        <Title className={titleClassName}>{title}</Title>
+        <Container className={`column`} isFirst={isFirst} isLast={isLast}>
+          <Droppable droppableId={id}>
+            {(provided, snapshot) => (
+              <TaskList 
+              ref={provided.innerRef} 
+              {...provided.droppableProps}
+              isDraggingOver={snapshot.isDraggingOver}
+              >
+                {/* Your tasks will go here */}
+                {
+                  tasks.map((task, index)=> (<Task
+                    key={index}
+                    index={index}
+                    task={task}
                   />
                   ))
-              }
-
-              {provided.placeholder}
-            </TaskList>
-          )}
-        </Droppable>
-      </Container>
-    </div>
-  );
-}
+                }
+  
+                {provided.placeholder}
+              </TaskList>
+            )}
+          </Droppable>
+        </Container>
+      </div>
+    );
+  }
+  

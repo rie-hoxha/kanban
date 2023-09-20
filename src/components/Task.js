@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import Font
 import { faTrash } from '@fortawesome/free-solid-svg-icons'; // Import the trash icon
 
 
+
 const Container = styled.div`
   border-radius: 10px;
   padding: 8px;
@@ -42,7 +43,7 @@ const TaskId = styled.span`
 //
 function bgcolorChange(props) {
     return props.isDragging
-      ? "lightgreen"
+      ? "#CBDFD8"
       : props.isDraggable
       ? props.isBacklog
         ? "#F2D7D5"
