@@ -4,23 +4,22 @@ import Column from './Column';
 
 
 export default function KanbanBoard() {
-  // two columns, Incomplete and Complete
-  const [completed, setCompleted] = useState([]);
-  const [incomplete, setIncomplete] = useState([]);
+  // Define initial data
+  const initialData = {
+    incomplete: [
+      { id: 'task1', content: 'Task 1', completed: false },
+      { id: 'task2', content: 'Task 2', completed: false },
+      // Add more tasks to the 'incomplete' array as needed
+    ],
+    completed: [
+      { id: 'task3', content: 'Task 3', completed: true },
+      { id: 'task4', content: 'Task 4', completed: true },
+      // Add more tasks to the 'completed' array as needed
+    ],
+  };
 
-
-  //using the json placeholder to get the fake data
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.json())
-      .then((json) => {
-        setCompleted(json.filter((task) => task.completed));
-        setIncomplete(json.filter((task) => !task.completed));
-      });
-  }, []);
-
-
+  const [completed, setCompleted] = useState(initialData.completed);
+  const [incomplete, setIncomplete] = useState(initialData.incomplete);
   
   //the handleDragFunction whoch basically handels the relocation. it deletes task from the origin and pushes it to new column
   const handleDragEnd = (result) => {
