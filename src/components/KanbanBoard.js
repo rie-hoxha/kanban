@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import Column from './Column';
 
