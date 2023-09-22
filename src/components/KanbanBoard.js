@@ -26,11 +26,11 @@ export default function KanbanBoard() {
   const handleDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
-    if (source.droppableId == destination.droppableId) return;
+    if (source.droppableId === destination.droppableId) return;
 
     //REMOVE FROM SOURCE ARRAY
 
-    if (source.droppableId == 2) {
+    if (source.droppableId === 2) {
       setCompleted(removeItemById(draggableId, completed));
     } else {
       setIncomplete(removeItemById(draggableId, incomplete));
@@ -41,7 +41,7 @@ export default function KanbanBoard() {
     const task = findItemById(draggableId, [...incomplete, ...completed]);
 
     //ADD ITEM
-    if (destination.droppableId == 2) {
+    if (destination.droppableId === 2) {
       setCompleted([{ ...task, completed: !task.completed }, ...completed]);
     } else {
       setIncomplete([{ ...task, completed: !task.completed }, ...incomplete]);
@@ -49,11 +49,11 @@ export default function KanbanBoard() {
   };
 
   function findItemById(id, array) {
-    return array.find((item) => item.id == id);
+    return array.find((item) => item.id === id);
   }
 
   function removeItemById(id, array) {
-    return array.filter((item) => item.id != id);
+    return array.filter((item) => item.id !== id);
   }
 
 
