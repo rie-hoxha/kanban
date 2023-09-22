@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Your existing CSS styles go here */
+
+/* Base styles for desktop */
+.column {
+  width: 350px;
+}
+
+/* Media query for tablets (e.g., portrait mode) */
+@media (max-width: 768px) {
+  .column {
+    width: 100%; /* Make columns full width on tablets */
+    margin-bottom: 20px; /* Add some spacing between columns */
+  }
+
+  .title {
+    margin-right: 0; /* Remove right margin on tablets */
+    margin-bottom: 10px; /* Add some spacing below titles */
+  }
+}
+
+/* Media query for smaller screens (e.g., smartphones) */
+@media (max-width: 480px) {
+  .column {
+    width: 100%; /* Make columns full width on smaller screens */
+    margin-bottom: 20px; /* Add some spacing between columns */
+  }
+
+  .title {
+    margin-right: 0; /* Remove right margin on smaller screens */
+    margin-bottom: 10px; /* Add some spacing below titles */
+  }
+}
